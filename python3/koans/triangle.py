@@ -18,10 +18,17 @@
 #
 
 
+class TriangleError(ValueError):
+    pass
+
+
 def triangle(a, b, c):
+    if a <= 0 or b <= 0 or c <= 0:
+        raise TriangleError
+    if a > b + c or b > a + c or c > a + b:
+        raise TriangleError
     if a == b == c:
         return 'equilateral'
-
     elif a == b != c or b == c != a or a == c != b:
         return 'isosceles'
     else:
