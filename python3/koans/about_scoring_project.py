@@ -74,13 +74,27 @@ def score(dice):
 
     return totalscore
 
-    #for index1 in range(len(dice)):
-    #    for index2 in range(len(dice)):
-    #        if dice[index1] != dice[index2]:
-    #            return 0
+"""sol
 
-    #if dice[0] == dice[1] == dice[2] == 1:
-    #    return 1000
+def score(dice):
+score = 0
+tallies = {}.fromkeys(set(dice), 0)
+for die in dice:
+tallies[die] += 1
+if 1 in tallies and tallies[1] >= 3:
+tallies[1] -= 3
+score += 1000
+for k in tallies:
+if tallies[k] >= 3:
+tallies[k] -= 3
+score += k * 100
+for k in tallies:
+if k == 1:
+score += 100 * tallies[k]
+elif k== 5:
+score += 50 * tallies[k]
+return score
+"""
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
